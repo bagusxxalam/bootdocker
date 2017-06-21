@@ -12,6 +12,6 @@ public class HomeController {
 
     @RequestMapping(path = "/",method = RequestMethod.GET)
     public String home() {
-        return "Hello docker from windows 10";
+        return "Welcome to the machine";
     }
 }

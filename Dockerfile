@@ -1,12 +1,15 @@
+#Offline build
+#FROM openjdk:8
+#ADD /build/libs/docker-1.0.1.jar docker-app.jar
+#ENTRYPOINT ["java","-jar","docker-app.jar"]
+
+#Production build
 FROM gradle:jdk8-alpine
-#ENTRYPOINT ["java","-jar","BootDocker.jar"]
-#CMD ls
 ADD gradle gradle
 ADD src src
 ADD build.gradle build.gradle
 ADD gradlew gradlew
-ADD gradlew.bat gradlew.bat
-RUN sh -c './gradlew build'
+RUN sh -c 'gradle build'
 ENTRYPOINT ["sh","-c","java -jar ./build/libs/docker-1.0.1.jar"]
-#ADD /build/libs/docker-1.0.1.jar BootDocker.jar
+
 EXPOSE 8080
